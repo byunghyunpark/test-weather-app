@@ -1,4 +1,16 @@
-angular.module('App', ['ionic'])
+var app = angular.module('App', ['ionic'])
+
+app
+.config(function ($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('search', {
+      url: '/search',
+      controller: 'SearchController',
+      templateUrl: 'views/search/search.html'
+    });
+
+    $urlRouterProvider.otherwise('/search');
+})
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
