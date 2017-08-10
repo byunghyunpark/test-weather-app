@@ -9,4 +9,4 @@ app
                 $scope.results = response.results;
             });
     };
-});
+}); 
