@@ -1,5 +1,5 @@
 app
-  .controller('WeatherController', function ($scope, $http, $stateParams, $ionicActionSheet, Locations, Settings) {
+  .controller('WeatherController', function ($scope, $http, $stateParams, $ionicActionSheet, Locations, Settings, $ionicModal) {
   $scope.params = $stateParams;
   $scope.settings = Settings;
 
@@ -44,4 +44,30 @@ app
       }
     });
   };
+
+  $scope.showModal = function () {
+    if ($scope.modal) {
+      $scope.modal.show();
+    } else {
+      $ionicModal.fromTemplateUrl('views/weather/modal-chart.html', {
+        scope: $scope
+      }).then(function (modal) {
+        $scope.modal = modal;
+        var days = [];
+        var day = Date.now();
+        for (var i = 0; i < 365; i++) {
+          day += 1000 * 60 * 60 * 24;
+          days.push(SunCalc.getTimes(day, $scope.params.lat, $scope.params.lng));
+        }
+        $scope.chart = days;
+        $scope.modal.show();
+      });
+    }
+  };
+  $scope.hideModal = function () {
+    $scope.modal.hide();
+  };
+  $scope.$on('$destroy', function () {
+    $scope.modal.remove();
+  });
 });
