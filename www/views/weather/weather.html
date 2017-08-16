@@ -19,7 +19,7 @@
 						<p>{{forecast.currently.summary}}</p>
 						<p>High: {{forecast.daily.data[0].temperatureMax | number:0}}&deg; Low: {{forecast.daily.data[0].temperatureMin | number:0}}&deg;
 							Feels Like: {{forecast.currently.apparentTemperature | number:0}}&deg;</p>
-						<p>Wind: {{forecast.currently.windSpeed | number:0}} <span class="icon wind-icon ion-ios7-arrow-thin-up" ng-style="{transform: 'rotate(' + forecast.currently.windBearing + 'deg)'}"></span></p>
+						<p>Wind: {{forecast.currently.windSpeed | number:0}} <span class="icon wind-icon icon ion-arrow-up-a" ng-style="{transform: 'rotate(' + forecast.currently.windBearing + 'deg)'}"></span></p>
 					</div>
 				</div>
 
